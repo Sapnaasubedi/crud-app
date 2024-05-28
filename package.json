@@ -2,10 +2,12 @@
   "name": "crud-fe",
   "version": "0.1.0",
   "private": true,
+  "main": "page.tsx",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 4000",
     "lint": "next lint"
   },
   "dependencies": {
