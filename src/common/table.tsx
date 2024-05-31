@@ -63,7 +63,7 @@ const ListTable = <T,>({
               key={d.id ?? uuidv4()}
               sx={{
                 ':hover': {
-                  backgroundColor: "black",
+                  backgroundColor: "grey",
                 },
                 '& td:first-child': {
                   whiteSpace: `pre`,

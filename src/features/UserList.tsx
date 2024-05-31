@@ -6,25 +6,12 @@ import { User } from "./user.type";
 import ListTable, { TableColumn } from "@/common/table";
 import { HandleRedirect } from "@/types/route";
 
-
-
 const columns = (): Array<TableColumn<User>> => [
   {
     dataIndex: `fname`,
     title: `First Name`,
-    render: (name: string, user) => (
-      <Typography
-        variant="body2"
-        component="p"
-        color="blue"
-        sx={{ cursor: `pointer` }}
-        // onClick={handleRedirect(`/admin/Users/${user.id}`)}
-      >
-        {name}
-      </Typography>
-    ),
   },
-  { dataIndex: `lName`, title: `Last Name` },
+  { dataIndex: `lname`, title: `Last Name` },
   { dataIndex: `email`, title: `Email` },
   {
     dataIndex: `action`,
@@ -35,20 +22,12 @@ const columns = (): Array<TableColumn<User>> => [
 interface UserListProps {
   isValidating: boolean;
   items?: User[];
-
 }
 
-const UserList: FC<UserListProps> = ({
-  isValidating,
-  items = [],
-}) => {
+const UserList: FC<UserListProps> = ({ isValidating, items = [] }) => {
   return (
     <Stack spacing={2} className="py-large">
-      <ListTable
-        isValidating={isValidating}
-        columns={columns()}
-        data={items}
-      />
+      <ListTable isValidating={isValidating} columns={columns()} data={items} />
     </Stack>
   );
 };
