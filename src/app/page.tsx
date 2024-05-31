@@ -1,6 +1,7 @@
 "use client";
 import UserEntry from "@/features/UserEntry";
-import { IUserEntry } from "@/features/user.type";
+import UserList from "@/features/UserList";
+import { IUserEntry, User } from "@/features/user.type";
 import {
   Box,
   Button,
@@ -28,11 +29,18 @@ const page = () => {
         </Container>
       </Box>
       <Container>
+        
         <Card style={{ borderRadius: `16px`, border: `2px solid #4158FF` }}>
           <CardContent sx={{ p: 4 }}>
+           
             <UserEntry onSubmit={onSubmit} />
           </CardContent>
         </Card>
+        <UserList isValidating={false} handleActionMenuOpen={function (user: User): (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void {
+              throw new Error("Function not implemented.");
+            } } handleRedirect={function (url: string): () => void {
+              throw new Error("Function not implemented.");
+            } }/>
       </Container>
     </>
   );

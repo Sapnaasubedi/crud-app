@@ -1,12 +1,14 @@
 export interface User {
-    fname: string;
-    lname:string;
-    email:string;
-  }
+  _id: string;
+  id: string;
+  fname: string;
+  lname: string;
+  email: string;
+}
 
-  export interface IUserEntry {
-    fname: string;
-    lname:string;
-    email:string;
-    password:string;
-  }
+export interface IUserEntry {
+  fname: string;
+  lname: string;
+  email: string;
+  password: string;
+}
