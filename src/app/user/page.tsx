@@ -7,6 +7,7 @@ import {
 import React, {  } from "react";
 import axios from "axios";
 import { User } from "@/features/user.type";
+import Link from "next/link";
 
 const UserListPage = async () => {
   async function getUser(): Promise<User[]> {
@@ -23,8 +24,8 @@ const UserListPage = async () => {
   return (
     <Stack spacing={5} alignItems="center">
       <Container>
-        <Button color="primary" size="large" variant="outlined">
-          Add User
+        <Button color="primary" size="large" variant="outlined" >
+      <Link href={`/user/add`}>Add User</Link>    
         </Button>
       </Container>
       <Container>

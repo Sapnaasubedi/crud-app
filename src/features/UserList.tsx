@@ -27,7 +27,7 @@ interface UserListProps {
 const UserList: FC<UserListProps> = ({ isValidating, items = [] }) => {
   return (
     <Stack spacing={2} className="py-large">
-      <ListTable isValidating={isValidating} columns={columns()} data={items} />
+      <ListTable  isValidating={isValidating} columns={columns()} data={items} />
     </Stack>
   );
 };
