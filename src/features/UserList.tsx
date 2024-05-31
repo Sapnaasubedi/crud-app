@@ -1,22 +1,14 @@
 "use client";
 
-import { IconButton, Stack, TablePagination, Typography } from "@mui/material";
-import { type FC, type MouseEvent } from "react";
-import { MdMoreVert } from "react-icons/md";
+import { Stack, Typography } from "@mui/material";
+import { type FC } from "react";
 import { User } from "./user.type";
 import ListTable, { TableColumn } from "@/common/table";
+import { HandleRedirect } from "@/types/route";
 
-interface UserColumns {
-  handleActionMenuOpen: (
-    user: User
-  ) => (event: MouseEvent<HTMLButtonElement>) => void;
-  handleRedirect: (url: string) => () => void;
-}
 
-const columns = ({
-  handleActionMenuOpen,
-  handleRedirect,
-}: UserColumns): Array<TableColumn<User>> => [
+
+const columns = (): Array<TableColumn<User>> => [
   {
     dataIndex: `fname`,
     title: `First Name`,
@@ -26,7 +18,7 @@ const columns = ({
         component="p"
         color="blue"
         sx={{ cursor: `pointer` }}
-        onClick={handleRedirect(`/admin/Users/${user.id}`)}
+        // onClick={handleRedirect(`/admin/Users/${user.id}`)}
       >
         {name}
       </Typography>
@@ -37,34 +29,24 @@ const columns = ({
   {
     dataIndex: `action`,
     title: `Action`,
-    render: (_, User) => (
-      <IconButton aria-label="action" onClick={handleActionMenuOpen(User)}>
-        <MdMoreVert />
-      </IconButton>
-    ),
   },
 ];
 
 interface UserListProps {
   isValidating: boolean;
   items?: User[];
-  handleActionMenuOpen: (
-    user: User
-  ) => (event: MouseEvent<HTMLButtonElement>) => void;
-  handleRedirect: (url: string) => () => void;
+
 }
 
 const UserList: FC<UserListProps> = ({
   isValidating,
   items = [],
-  handleActionMenuOpen,
-  handleRedirect,
 }) => {
   return (
     <Stack spacing={2} className="py-large">
       <ListTable
         isValidating={isValidating}
-        columns={columns({ handleActionMenuOpen, handleRedirect })}
+        columns={columns()}
         data={items}
       />
     </Stack>
