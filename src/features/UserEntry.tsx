@@ -1,10 +1,13 @@
 "use client";
 
-import { Grid, Input, Stack } from '@mui/material';
+import { Button, Grid, Input, Stack } from '@mui/material';
 import React from 'react';
 import {  Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { IUserEntry } from './user.type';
 import { FC } from 'react';
+import FormInput from '@/common/form';
+
+
 
 const initialValue: IUserEntry = {
   fname: '',
@@ -34,14 +37,15 @@ const UserEntry: FC<UserEntryProps> = ({
             name="fname"
             control={control}
             render={({ field: { name, onChange, value } }) => (
-              <Input
+              <FormInput
                 id={name}
                 name={name}
                 value={value}
                 onChange={onChange}
                 type="text"
                 size="small"
-                placeholder="First Name"
+                label="First Name"
+                placeholder="Jhon"
                 fullWidth
                 sx={{ p: 1, backgroundColor: '#F3F3F3' }}
               />
@@ -54,14 +58,16 @@ const UserEntry: FC<UserEntryProps> = ({
             name="lname"
             control={control}
             render={({ field: { name, onChange, value } }) => (
-              <Input
+              <FormInput
                 id={name}
                 name={name}
                 value={value}
                 onChange={onChange}
                 type="text"
                 size="small"
-                placeholder="Last Name"
+                label="Last Name"
+
+                placeholder="Doe"
                 fullWidth
                 sx={{ p: 1, backgroundColor: '#F3F3F3' }}
               />
@@ -73,14 +79,16 @@ const UserEntry: FC<UserEntryProps> = ({
             name="email"
             control={control}
             render={({ field: { name, onChange, value } }) => (
-              <Input
+              <FormInput
                 id={name}
                 name={name}
                 value={value}
                 onChange={onChange}
                 type="email"
                 size="small"
-                placeholder="Email"
+                label="Email"
+
+                placeholder="johndoe@gmail.com"
                 fullWidth
                 sx={{ p: 1, backgroundColor: '#F3F3F3' }}
               />
@@ -92,14 +100,16 @@ const UserEntry: FC<UserEntryProps> = ({
             name="password"
             control={control}
             render={({ field: { name, onChange, value } }) => (
-              <Input
+              <FormInput
                 id={name}
                 name={name}
                 value={value}
                 onChange={onChange}
                 type="password"
                 size="small"
-                placeholder="Password"
+                label="Password"
+
+                placeholder="*****"
                 fullWidth
                 sx={{ p: 1, backgroundColor: '#F3F3F3' }}
               />
@@ -107,7 +117,7 @@ const UserEntry: FC<UserEntryProps> = ({
           />
         </Grid>
         <Grid item md={12}>
-        <button type="submit">Submit</button>
+        <Button type="submit" variant="outlined">Submit</Button>
 </Grid>
       </Grid>
     </Stack>
