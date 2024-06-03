@@ -1,8 +1,9 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const dotenv = require("dotenv");
-const cors = require("cors");
+import express from "express";
+import mongoose from "mongoose";
+import route from "./routes/userRoute.js";
+import bodyParser from "body-parser"
+import cors from "cors";
+import dotenv from "dotenv";
 
 const app = express();
 app.use(bodyParser.json());
@@ -21,3 +22,6 @@ mongoose
     });
   })
   .catch((error) => console.log(error));
+
+  
+  app.use("/api", route)
