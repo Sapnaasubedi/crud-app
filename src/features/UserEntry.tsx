@@ -1,11 +1,12 @@
 "use client";
 
 import { Button, Grid, Input, Stack } from '@mui/material';
-import React from 'react';
-import {  Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { IUserEntry } from './user.type';
+import React, { useEffect } from 'react';
+import {  Controller, Form, SubmitHandler } from 'react-hook-form';
+import { IUserEntry, User } from './user.type';
 import { FC } from 'react';
 import FormInput from '@/common/form';
+import { isEmpty } from '@/types/string';
 
 
 
@@ -15,12 +16,18 @@ const initialValue: IUserEntry = {
   email: '',
   password: ''
 };
+const { useForm } = Form;
+
 interface UserEntryProps {
   onSubmit: SubmitHandler<IUserEntry>;
+  data : User,
 }
 const UserEntry: FC<UserEntryProps> = ({
   onSubmit,
+  data = undefined,
 }) => {
+  const [form] = useForm();
+
   const {
     control,
     handleSubmit,
@@ -28,6 +35,11 @@ const UserEntry: FC<UserEntryProps> = ({
     defaultValues: initialValue,
    
   });
+
+  useEffect(() => {
+    if (!isEmpty(data)) form.setFieldsValue({ data });
+  }, [data, form]);
+  
    return (
   <form onSubmit={handleSubmit(onSubmit)}>
     <Stack spacing={6}>
